@@ -1,0 +1,24 @@
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.key {
+  min-width: 50px;
+  height: 50px;
+  margin: 5px;
+  font-size: 24px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.page__textarea-field {
+  width: 100%;
+  height: 100px;
+  margin-top: 20px;
+  font-size: 24px;
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
