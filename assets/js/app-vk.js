@@ -7,3 +7,11 @@ keyboard.addEventListener('click', (event) => {
     outputField.value += targetContent;
   }
 });
+
+window.addEventListener('keydown', (event) => {
+  outputField.value += event.key;
+});
+
+// outputField.addEventListener('keydown', (event) => {
+//   event.preventDefault();
+// });
