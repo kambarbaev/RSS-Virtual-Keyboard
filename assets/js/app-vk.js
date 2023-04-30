@@ -1,17 +1,38 @@
 const keyboard = document.querySelector('.keyboard');
 const outputField = document.querySelector('.page__textarea-field');
+const keyboardKeys = document.querySelectorAll('.key');
 
-keyboard.addEventListener('click', (event) => {
+keyboard.addEventListener('mousedown', (event) => {
   if (event.target.classList.contains('key')) {
-    const targetContent = event.target.textContent;
-    outputField.value += targetContent;
+    outputField.value += event.target.textContent;
   }
 });
 
-window.addEventListener('keydown', (event) => {
-  outputField.value += event.key;
-});
+function clickOnButton(keysArr) {
+  keysArr.forEach((key) => {
+    key.addEventListener('mousedown', () => {
+      key.classList.add('key-active');
+    });
 
-// outputField.addEventListener('keydown', (event) => {
-//   event.preventDefault();
-// });
+    key.addEventListener('mouseup', () => {
+      key.classList.remove('key-active');
+    });
+  });
+}
+
+function hoverOnButton(keysArr) {
+  keysArr.forEach((key) => {
+    key.addEventListener('mouseenter', () => {
+      if (!key.classList.contains('key-active')) {
+        key.classList.add('key-hover');
+      }
+    });
+
+    key.addEventListener('mouseleave', () => {
+      key.classList.remove('key-hover');
+    });
+  });
+}
+
+clickOnButton(keyboardKeys);
+hoverOnButton(keyboardKeys);
