@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/style/style.css">
+  <title>RSS Virtual Keyboard</title>
+</head>
+<body style="background-color: lightblue;">
+  <main class="page">
+    <div class="page__wrapper">
+      <h1 class="page__title">RSS Виртуальная клавиатура</h1>
+      <div class="page__text-output-field">
+        <textarea class="page__textarea-field" name="text-output" id="text-output"></textarea>
+      </div>
+      <div class="page__keyboard keyboard">
+        <div class="keyboard__row">
+          <button class="keyboard__key key" data-key="Backquote">`</button>
+          <button class="keyboard__key key" data-key="Digit1">1</button>
+          <button class="keyboard__key key" data-key="Digit2">2</button>
+          <button class="keyboard__key key" data-key="Digit3">3</button>
+          <button class="keyboard__key key" data-key="Digit4">4</button>
+          <button class="keyboard__key key" data-key="Digit5">5</button>
+          <button class="keyboard__key key" data-key="Digit6">6</button>
+          <button class="keyboard__key key" data-key="Digit7">7</button>
+          <button class="keyboard__key key" data-key="Digit8">8</button>
+          <button class="keyboard__key key" data-key="Digit9">9</button>
+          <button class="keyboard__key key" data-key="Digit0">0</button>
+          <button class="keyboard__key key" data-key="Minus">-</button>
+          <button class="keyboard__key key" data-key="Equal">=</button>
+          <button class="keyboard__key key backspace" data-key="Backspace">Backspace</button>
+        </div>
+        <div class="keyboard__row">
+          <button class="keyboard__key key tab" data-key="Tab">Tab</button>
+          <button class="keyboard__key key" data-key="KeyQ">q</button>
+          <button class="keyboard__key key" data-key="KeyW">w</button>
+          <button class="keyboard__key key" data-key="KeyE">e</button>
+          <button class="keyboard__key key" data-key="KeyR">r</button>
+          <button class="keyboard__key key" data-key="KeyT">t</button>
+          <button class="keyboard__key key" data-key="KeyY">y</button>
+          <button class="keyboard__key key" data-key="KeyU">u</button>
+          <button class="keyboard__key key" data-key="KeyI">i</button>
+          <button class="keyboard__key key" data-key="KeyO">o</button>
+          <button class="keyboard__key key" data-key="KeyP">p</button>
+          <button class="keyboard__key key" data-key="BracketLeft">[</button>
+          <button class="keyboard__key key" data-key="BracketRigh">]</button>
+          <button class="keyboard__key key" data-key="Backslash">\</button>
+          <button class="keyboard__key key delete" data-key="Delete">Del</button>
+        </div>
+        <div class="keyboard__row">
+          <button class="keyboard__key key capslock" data-key="CapsLock">CapsLock</button>
+          <button class="keyboard__key key" data-key="KeyA">ф</button>
+          <button class="keyboard__key key" data-key="KeyS">ы</button>
+          <button class="keyboard__key key" data-key="KeyD">в</button>
+          <button class="keyboard__key key" data-key="KeyF">f</button>
+          <button class="keyboard__key key" data-key="KeyG">g</button>
+          <button class="keyboard__key key" data-key="KeyH">h</button>
+          <button class="keyboard__key key" data-key="KeyJ">j</button>
+          <button class="keyboard__key key" data-key="KeyK">k</button>
+          <button class="keyboard__key key" data-key="KeyL">l</button>
+          <button class="keyboard__key key" data-key="Semicolon">;</button>
+          <button class="keyboard__key key" data-key="Quote">'</button>
+          <button class="keyboard__key key enter" data-key="Enter">Enter</button>
+        </div>
+        <div class="keyboard__row">
+          <button class="keyboard__key key shift" data-key="ShiftLeft">Shift</button>
+          <button class="keyboard__key key" data-key="KeyZ">z</button>
+          <button class="keyboard__key key" data-key="KeyX">x</button>
+          <button class="keyboard__key key" data-key="KeyC">c</button>
+          <button class="keyboard__key key" data-key="KeyV">v</button>
+          <button class="keyboard__key key" data-key="KeyB">b</button>
+          <button class="keyboard__key key" data-key="KeyN">n</button>
+          <button class="keyboard__key key" data-key="KeyM">m</button>
+          <button class="keyboard__key key" data-key="Comma">,</button>
+          <button class="keyboard__key key" data-key="Period">.</button>
+          <button class="keyboard__key key" data-key="Slash">/</button>
+          <button class="keyboard__key key" data-key="ArrowUp">↑</button>
+          <button class="keyboard__key key shift" data-key="ShiftRight">Shift</button>
+        </div>
+        <div class="keyboard__row">
+          <button class="keyboard__key key service" data-key="ControlLeft">Ctrl</button>
+          <button class="keyboard__key key service" data-key="MetaLeft">Win</button>
+          <button class="keyboard__key key service" data-key="AltLeft">Alt</button>
+          <button class="keyboard__key key space" data-key="Space">Space</button>
+          <button class="keyboard__key key service" data-key="AltRight">Alt</button>
+          <button class="keyboard__key key" data-key="ArrowLeft">←</button>
+          <button class="keyboard__key key" data-key="ArrowDown">↓</button>
+          <button class="keyboard__key key" data-key="ArrowRight">→</button>
+          <button class="keyboard__key key service" data-key="ControlRight">Ctrl</button>
+        </div>
+      </div>
+      <div class="page__description" style="text-align: center;">
+        <p class="page__text">Клавиатура создана в операционной системе Windows</p>
+        <p class="page__text" style="color: red;">Комбинация для переключения языка неработает: левыe ctrl + alt</p>
+        <p class="page__text" style="color: red;">К сожалению я не справился</p>
+      </div>
+    </div>
+  </main>
+  <script src="./assets/js/app-vk.js"></script>
+</body>
+</html>
