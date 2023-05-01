@@ -4,6 +4,31 @@ const keyboardKeys = document.querySelectorAll('.key');
 const ignoredButtons = ['AltLeft', 'ControlLeft', 'AltRight', 'ControlRight', 'MetaLeft'];
 // const arrowButtons = ['ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight'];
 
+function deleteContentInOutputField(dataKey) {
+  const { selectionStart: startSelect, selectionEnd: endSelect } = outputField;
+  if (dataKey === 'Delete') {
+    if (endSelect === startSelect) {
+      outputField.value = outputField.value.slice(0, startSelect)
+      + outputField.value.slice(startSelect + 1);
+      outputField.setSelectionRange(startSelect, startSelect);
+    } else {
+      outputField.value = outputField.value.slice(0, startSelect)
+      + outputField.value.slice(endSelect);
+      outputField.setSelectionRange(startSelect, startSelect);
+    }
+  } else if (dataKey === 'Backspace') {
+    if (startSelect !== 0 && startSelect === endSelect) {
+      outputField.value = outputField.value.slice(0, startSelect - 1)
+      + outputField.value.slice(startSelect);
+      outputField.setSelectionRange(startSelect - 1, startSelect - 1);
+    } else {
+      outputField.value = outputField.value.slice(0, startSelect)
+      + outputField.value.slice(endSelect);
+      outputField.setSelectionRange(startSelect, startSelect);
+    }
+  }
+}
+
 function addButtonContentInOutputField(event) {
   if (event.target.classList.contains('key')) {
     if (ignoredButtons.includes(event.target.dataset.key)) {
@@ -17,10 +42,13 @@ function addButtonContentInOutputField(event) {
         outputField.value += '\t';
         break;
       case 'Backspace':
-        outputField.value = outputField.value.slice(0, -1);
+        deleteContentInOutputField('Backspace');
         break;
       case 'Enter':
         outputField.value += '\n';
+        break;
+      case 'Delete':
+        deleteContentInOutputField('Delete');
         break;
       default:
         outputField.value += event.target.textContent;
@@ -92,9 +120,10 @@ window.addEventListener('keydown', (event) => {
             outputField.value += ' ';
             break;
           case 'Backspace':
-            outputField.value = outputField.value.slice(0, -1);
+            deleteContentInOutputField('Backspace');
             break;
           case 'Delete':
+            deleteContentInOutputField('Delete');
             break;
           default:
             outputField.value += key.textContent;
