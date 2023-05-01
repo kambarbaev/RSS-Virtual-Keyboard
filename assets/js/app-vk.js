@@ -1,7 +1,7 @@
 const keyboard = document.querySelector('.keyboard');
 const outputField = document.querySelector('.page__textarea-field');
 const keyboardKeys = document.querySelectorAll('.key');
-const ignoredButtons = ['AltLeft', 'ControlLeft', 'AltRight', 'ControlRight'];
+const ignoredButtons = ['AltLeft', 'ControlLeft', 'AltRight', 'ControlRight', 'MetaLeft'];
 // const arrowButtons = ['ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight'];
 
 function addButtonContentInOutputField(event) {
@@ -54,6 +54,7 @@ function addHoverOnButton(keysArr) {
     });
   });
 }
+
 keyboard.addEventListener('mousedown', addButtonContentInOutputField);
 addActiveOnButton(keyboardKeys);
 addHoverOnButton(keyboardKeys);
@@ -62,62 +63,75 @@ window.addEventListener('keydown', (event) => {
   console.log(event);
   keyboardKeys.forEach((key) => {
     if (key.dataset.key === event.code) {
-      // eslint-disable-next-line no-console
-      // console.log(key);
       key.classList.add('key-active');
+      if (ignoredButtons.includes(event.code)) {
+        return;
+      }
+      if (outputField !== document.activeElement) {
+        switch (event.key) {
+          case 'ArrowLeft':
+            outputField.value += '←';
+            break;
+          case 'ArrowRight':
+            outputField.value += '→';
+            break;
+          case 'ArrowUp':
+            outputField.value += '↑';
+            break;
+          case 'ArrowDown':
+            outputField.value += '↓';
+            break;
+          case 'Tab':
+            event.preventDefault();
+            outputField.value += '\t'; // или 4 пробела
+            break;
+          case 'Enter':
+            outputField.value += '\n';
+            break;
+          case ' ':
+            outputField.value += ' ';
+            break;
+          case 'Backspace':
+            outputField.value = outputField.value.slice(0, -1);
+            break;
+          case 'Delete':
+            break;
+          default:
+            outputField.value += key.textContent;
+        }
+      } else {
+        switch (event.key) {
+          case 'ArrowLeft':
+            outputField.value += '←';
+            break;
+          case 'ArrowRight':
+            outputField.value += '→';
+            break;
+          case 'ArrowUp':
+            outputField.value += '↑';
+            break;
+          case 'ArrowDown':
+            outputField.value += '↓';
+            break;
+          case 'Tab':
+            event.preventDefault();
+            outputField.value += '\t'; // или 4 пробела
+            break;
+          case 'Enter':
+            break;
+          case ' ':
+            break;
+          case 'Backspace':
+            break;
+          case 'Delete':
+            break;
+          default:
+            event.preventDefault();
+            outputField.value += key.textContent;
+        }
+      }
     }
   });
-  if (outputField !== document.activeElement) {
-    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight' && event.key !== 'ArrowUp' && event.key !== 'ArrowDown') {
-      if (ignoredButtons.includes(event.code)) {
-        outputField.value += 'надо идти спать(';
-      } else {
-        outputField.value += event.key;
-      }
-    } else {
-      let content;
-      switch (event.key) {
-        case 'ArrowLeft':
-          content = '←';
-          break;
-        case 'ArrowRight':
-          content = '→';
-          break;
-        case 'ArrowUp':
-          content = '↑';
-          break;
-        case 'ArrowDown':
-          content = '↓';
-          break;
-        default:
-          content = '';
-      }
-      outputField.value += content;
-    }
-  } else {
-    let content;
-    switch (event.key) {
-      case 'ArrowLeft':
-        event.preventDefault();
-        content = '←';
-        break;
-      case 'ArrowRight':
-        event.preventDefault();
-        content = '→';
-        break;
-      case 'ArrowUp':
-        event.preventDefault();
-        content = '↑';
-        break;
-      case 'ArrowDown':
-        event.preventDefault();
-        content = '↓';
-        break;
-      default:
-        content = '';
-    }
-    outputField.value += content;
-  }
 });
 
 window.addEventListener('keyup', (event) => {
